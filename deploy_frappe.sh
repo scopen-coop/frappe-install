@@ -5,11 +5,11 @@ export CURR_DOCKER_MARIADB_ROOT_PASS="123"
 export CONTAINER_BENCH_PATH="/workspace/development/frappe-bench"
 
 echo ""
-echo "Bienvenue dans cette assistant de deploiment d'un environement de developpment Frappe (ERPNext)"
-echo "Il est prévue pour un environement Linux (tester sur Debain 13/ Unbuntu 24.04 ( et si jamais 26.04 mais elle n'est pas encore officilement disponible))"
-echo "Aucune garantie de resultat n'est incluses !"
+echo "Bienvenue dans cette assistant de déploiement d'un environnement de développement Frappe (ERPNext)"
+echo "Il est prévue pour un environnement Linux (tester sur Debian 13/ Ubuntu 24.04 ( et si jamais 26.04 mais elle n'est pas encore officiellement disponible))"
+echo "Aucune garantie de résultat n'est incluses !"
 
-echo "Ce script necéssite que vous ayez les pré-requis suivant :"
+echo "Ce script nécessite que vous ayez les pré-requis suivant :"
 echo "	- [Install Docker](https://docs.docker.com/engine/install/ubuntu/)"
 echo "	- [Post Install for development environement](https://docs.docker.com/engine/install/linux-postinstall/)"
 echo "  - [Install docker-compose](https://docs.docker.com/compose/install/)"
@@ -23,7 +23,7 @@ read -p "Voulez-vous continuer ? (O/N) : " reponse
 if [[ "$reponse" =~ ^[Oo]$ ]]; then
     	echo "Vous avez répondu Oui."
 		echo "git submodule init;"
-    	git submodule init;
+    		git submodule init;
 		echo "git submodule update;"
 		git submodule update;
 	
@@ -53,7 +53,7 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
 		echo "Create /opt/data/$version/mysql to store MarriaDb DB : sudo mkdir -p  /opt/data/$version/mysql"
 		sudo mkdir -p "/opt/data/$version/mysql"
 		echo "Create Docker Volume : docker volume create --driver local --opt type=none --opt device=/opt/data/$version/mysql --opt o=bind $version-mariadb-vol"
-		docker volume create --driver local --opt type=none --opt device=/opt/data/"$version"/mysql --opt o=bind "$version"-mariadb-vol
+		docker volume create --driver local --opt type=none --opt device=/opt/data/"$version"/mysql --opt o=bind "$version"-mariadb-vol;
 	fi
 	
 	if [ ! -d "/opt/data/$version/redis_cache" ]; then
