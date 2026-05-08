@@ -1,3 +1,0 @@
-[submodule "frappe-docker-files"]
-	path = frappe-docker-files
-	url = https://github.com/scopen-coop/frappe-docker-files.git
