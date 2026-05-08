@@ -1,2 +1,3 @@
-./frappe-docker*
+frappe-docker*
+frappe_docker*
 .idea
