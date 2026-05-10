@@ -136,6 +136,9 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
     docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench set-config -g redis_queue redis://redis-queue:6379;
     docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench set-config -g redis_socketio redis://redis-socketio:6379;
     docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench set-config -g server_script_enabled 1;
+    docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench set-config -g shallow_clone false;
+    docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench setup requirements --dev;
+    docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench set-config -g dns_multitenant on;
   fi
 
   if [ ! -d "./$docker_folder/development/frappe-bench/app/erpnext" ]; then
@@ -143,6 +146,14 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
     reponse_get_erpnext=${reponse_get_erpnext:-O}
     if [[ "$reponse_clean_docker" =~ ^[Oo]$ ]]; then
       docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench get-app --branch "$app_version" erpnext https://github.com/frappe/erpnext.git;
+    fi
+  fi
+  
+  if [ ! -d "./$docker_folder/development/frappe-bench/app/erpnext_france" ]; then
+  	read -p "Voulez-vous get-app erpnext_france ? (O/n) : " reponse_get_erpnext_france
+    reponse_get_erpnext_france=${reponse_get_erpnext_france:-O}
+    if [[ "$reponse_clean_docker" =~ ^[Oo]$ ]]; then
+      docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench get-app --branch "$app_version" erpnext_france git@github.com:scopen-coop/erpnext_france.git;
     fi
   fi
 
@@ -155,15 +166,18 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
   echo "exemple de commande pour créer un site :";
   echo "bench new-site erpnextdev.local --mariadb-root-username root --mariadb-root-password 123 --admin-password admin --mariadb-user-host-login-scope='%' --db-name erpnextdev;"
   echo "bench --site erpnextdev.local install-app erpnext;";
+  echo "bench --site erpnextdev.local install-app erpnext_france;";
   echo "bench --site erpnextdev.local set-config developer_mode 1;";
   echo "bench --site erpnextdev.local clear-cache;";
   echo "";
   echo "bench start";
-  echo "ou mettre a jour le docker-compose pour le faire au démarage";
-
-
-
-
+  echo "(ou mettre à jour le docker-compose pour le faire au démarrage)";
+  echo "";
+  echo "Pensez également a mettre erpnextdev.local dans le fichier /etc/hosts ";
+  echo "";
+  echo "Dans les autre commandes intéressantes :";
+  echo "Supprimer toute les colonnes qui ne sont plus dans les DocType (json) ou dans les CustomField  : bench --site all trim-tables --no-backup";
+  echo "Update (pull,migrate,build) (attention si vous avez du code non commité et non poussé il sera effacé)  : bench update --reset --no-backup;";
 
 else
 	echo "Ok, we will keep up next time"
