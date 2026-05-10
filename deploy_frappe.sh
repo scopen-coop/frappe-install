@@ -8,7 +8,7 @@ export CONTAINER_BENCH_PATH="/workspace/development/frappe-bench";
 
 echo "";
 echo "Bienvenue dans cette assistant de déploiement d'un environnement de développement Frappe (ERPNext)";
-echo "Il est prévue pour un environnement Linux (tester sur Debian 13/ Ubuntu 24.04 ( et si jamais 26.04 mais elle n'est pas encore officiellement disponible))";
+echo "Il est prévue pour un environnement Linux (tester sur Debian 13/Ubuntu 24.04 (et si jamais 26.04 mais elle n'est pas encore officiellement disponible))";
 echo "Aucune garantie de résultat n'est incluses !";
 
 echo "Ce script nécessite que vous ayez les pré-requis suivant :";
@@ -158,9 +158,9 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
   fi
 
   echo "";
-  echo "Voila voila";
+  echo "Voila voila ! ";
   echo "Maintenant a vous de jouez : ";
-  echo "allez dans le container :";
+  echo "Allez dans le container :";
   echo "docker exec -e \"TERM=xterm-256color\" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1";
   echo "";
   echo "exemple de commande pour créer un site :";
@@ -180,7 +180,7 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
   echo "Update (pull,migrate,build) (attention si vous avez du code non commité et non poussé il sera effacé)  : bench update --reset --no-backup;";
 
 else
-	echo "Ok, we will keep up next time"
+	echo "Ok, on se revois plus tard"
    	# Actions à effectuer si la réponse est N
    	exit 1
 fi
