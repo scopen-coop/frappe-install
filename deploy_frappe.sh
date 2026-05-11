@@ -74,15 +74,15 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
 	if [ ! -d "/opt/data/$docker_scopen_version/redis_queue" ]; then
 		echo "Create /opt/data/$docker_scopen_version/redis_queue to store Redis Queue : sudo mkdir -p  /opt/data/$docker_scopen_version/redis_queue";
 	 	sudo mkdir -p  /opt/data/"$docker_scopen_version"/redis_queue;
-		echo "Create Docker Volume : docker volume create --driver local --opt type=none --opt device=/opt/data/$docker_scopen_version/redis_queue --opt o=bind $docker_scopen_version-redis-cache-queue;";
-		docker volume create --driver local --opt type=none --opt device=/opt/data/"$docker_scopen_version"/redis_queue --opt o=bind "$docker_scopen_version"-redis-cache-queue;
+		echo "Create Docker Volume : docker volume create --driver local --opt type=none --opt device=/opt/data/$docker_scopen_version/redis_queue --opt o=bind $docker_scopen_version-redis-queue-data;";
+		docker volume create --driver local --opt type=none --opt device=/opt/data/"$docker_scopen_version"/redis_queue --opt o=bind "$docker_scopen_version"-redis-queue-data;
 	fi
 
 	if [ ! -d "/opt/data/$docker_scopen_version/redis_socketio" ]; then
 		echo "Create /opt/data/$docker_scopen_version/redis_socketio to store Redis Socket Io : sudo mkdir -p  /opt/data/$docker_scopen_version/redis_socketio;";
 	 	sudo mkdir -p  /opt/data/"$docker_scopen_version"/redis_socketio;
-		echo "Create Docker Volume : docker volume create --driver local --opt type=none --opt device=/opt/data/$docker_scopen_version/redis_socketio --opt o=bind $docker_scopen_version-redis-redis-socketio;";
-		docker volume create --driver local --opt type=none --opt device=/opt/data/"$docker_scopen_version"/redis_socketio --opt o=bind "$docker_scopen_version"-redis-cache-socketio;
+		echo "Create Docker Volume : docker volume create --driver local --opt type=none --opt device=/opt/data/$docker_scopen_version/redis_socketio --opt o=bind $docker_scopen_version-redis-socketio-data";
+		docker volume create --driver local --opt type=none --opt device=/opt/data/"$docker_scopen_version"/redis_socketio --opt o=bind "$docker_scopen_version"-redis-socketio-data;
 	fi
 
   read -p "Voulez-vous dockerreset ? (O/n) : " reponse_clean_docker
