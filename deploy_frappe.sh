@@ -144,7 +144,7 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
   if [ ! -d "./$docker_folder/development/frappe-bench/app/erpnext" ]; then
     read -p "Voulez-vous get-app erpnext ? (O/n) : " reponse_get_erpnext
     reponse_get_erpnext=${reponse_get_erpnext:-O}
-    if [[ "$reponse_clean_docker" =~ ^[Oo]$ ]]; then
+    if [[ "$reponse_get_erpnext" =~ ^[Oo]$ ]]; then
       docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench get-app --branch "$app_version" erpnext https://github.com/frappe/erpnext.git;
     fi
   fi
@@ -152,7 +152,7 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
   if [ ! -d "./$docker_folder/development/frappe-bench/app/erpnext_france" ]; then
   	read -p "Voulez-vous get-app erpnext_france ? (O/n) : " reponse_get_erpnext_france
     reponse_get_erpnext_france=${reponse_get_erpnext_france:-O}
-    if [[ "$reponse_clean_docker" =~ ^[Oo]$ ]]; then
+    if [[ "$reponse_get_erpnext_france" =~ ^[Oo]$ ]]; then
       docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench get-app --branch "$app_version" erpnext_france git@github.com:scopen-coop/erpnext_france.git;
     fi
   fi
