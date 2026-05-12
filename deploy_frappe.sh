@@ -115,7 +115,7 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
 
 
   echo "";
-  echo "Build the image en run the container";
+  echo "Build the image and run the container";
   echo "";
   cd frappe-docker-files/"$docker_scopen_version";
   docker compose build --build-arg CURRENT_UID=$(id -u);
