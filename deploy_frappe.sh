@@ -161,7 +161,7 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
   echo "Voila voila ! ";
   echo "Maintenant a vous de jouez : ";
   echo "Allez dans le container :";
-  echo "docker exec -e \"TERM=xterm-256color\" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1";
+  echo "docker exec -e \"TERM=xterm-256color\" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bash";
   echo "";
   echo "exemple de commande pour créer un site :";
   echo "bench new-site erpnextdev.local --mariadb-root-username root --mariadb-root-password 123 --admin-password admin --mariadb-user-host-login-scope='%' --db-name erpnextdev;"
