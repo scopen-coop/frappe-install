@@ -141,6 +141,10 @@ if [[ "$reponse" =~ ^[Oo]$ ]]; then
     docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench set-config -g dns_multitenant on;
   fi
 
+  if [ ! -d "./$docker_folder/development/frappe-bench/app/scopen_frappe_diff" ]; then
+      docker exec -e "TERM=xterm-256color" -w /workspace/development/frappe-bench -it "$docker_scopen_version"-frappe-1 bench get-app https://github.com/scopen-coop/scopen-frappe-diff.git;
+  fi
+
   if [ ! -d "./$docker_folder/development/frappe-bench/app/erpnext" ]; then
     read -p "Voulez-vous get-app erpnext ? (O/n) : " reponse_get_erpnext
     reponse_get_erpnext=${reponse_get_erpnext:-O}
