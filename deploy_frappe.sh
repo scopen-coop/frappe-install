@@ -21,6 +21,18 @@ echo "On suppose que vous avez un maximum de connaissance de votre poste de trav
 echo "le script utilise 'sudo', vous devez donc être en connaissance du mot passe sudouers de votre poste";
 echo "";
 
+if [ ! -f "~/.gitconfig" ]; then
+  echo "Il vous manque le fichier ~/.gitconfig. Allez on configure sont profil git sur son poste (git config --global user.name "John Doe"  et git config --global user.email johndoe@example.com)";
+fi
+
+if [ ! -f "~/.bash_history" ]; then
+  echo "Il vous manque le fichier ~/.bash_history. Allez au moins une commande et ca devrait le faire";
+fi
+
+if [ ! -f ".ssh/known_hosts" ]; then
+  echo "Il vous manque le fichier .ssh/known_hosts. Allez au moins une connexion ssh sur un serveur";
+fi
+
 read -p "Voulez-vous continuer ? (O/n) : " reponse
 reponse=${reponse:-O}
 if [[ "$reponse" =~ ^[Oo]$ ]]; then
