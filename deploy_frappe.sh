@@ -8,7 +8,7 @@ export CONTAINER_BENCH_PATH="/workspace/development/frappe-bench";
 
 echo "";
 echo "Bienvenue dans cette assistant de déploiement d'un environnement de développement Frappe (ERPNext)";
-echo "Il est prévue pour un environnement Linux (tester sur Debian 13/Ubuntu 24.04 (et si jamais 26.04 mais elle n'est pas encore officiellement disponible))";
+echo "Il est prévue pour un environnement Linux (tester sur Debian 13/Ubuntu 24.04/Ubuntu 26.06";
 echo "Aucune garantie de résultat n'est incluses !";
 
 echo "Ce script nécessite que vous ayez les pré-requis suivant :";
